@@ -1,0 +1,16 @@
+<div class="container-fluid bg-dark">
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <%= link_to "Bookers", root_path,class: "navbar-brand text-light" %>
+    </div>
+    <div class="col-md-6">
+      <% if user_signed_in? %>
+        <%= link_to "ログアウト",destroy_user_session_path, method: :delete,class: "navbar-brand text-light" %>
+      <% else %>
+        <%= link_to "新規登録", new_user_registration_path,class: "navbar-brand text-light" %>
+        <%= link_to "ログイン", new_user_session_path,class: "navbar-brand text-light" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
