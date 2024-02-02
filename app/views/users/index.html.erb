@@ -1,2 +1,21 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'info', user: @user %>
+    </div>
+    <div class="col-md-8 offset-1">
+      <table class="table">
+        <tr>
+          <th></th>
+          <th colspan="2">名前</th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= image_tag user.get_profile_image(100,100) %></td>
+            <td><%= link_to user.name, user_path(user) %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

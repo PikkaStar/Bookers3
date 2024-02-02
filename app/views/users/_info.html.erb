@@ -1,0 +1,16 @@
+<h3><%= user.name %>さん</h3>
+<%= image_tag user.get_profile_image(100,100) %>
+<table class="table">
+  <tr>
+    <th>名前</th>
+    <td><%= user.name %></td>
+  </tr>
+  <tr>
+    <th>紹介</th>
+    <td><%= user.introduction %></td>
+  </tr>
+</table>
+
+<% if my_user?(user) %>
+  <%= link_to "編集",edit_user_path(user),class: "btn btn-success form-control" %>
+<% end %>
