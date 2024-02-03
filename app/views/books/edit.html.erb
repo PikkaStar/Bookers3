@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <%= form_with model: @book do |f| %>
+        <%= f.file_field :image,accept: "image/*" %><br>
+
+        <%= f.label :title,"タイトル" %>
+        <%= f.text_field :title, autofocus: true,class: "form-control" %>
+
+        <%= f.label :body, "内容" %>
+        <%= f.text_area :body, rows: "5" ,class: "form-control" %>
+
+        <%= f.submit "投稿",class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

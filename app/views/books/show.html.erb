@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "users/info", user: @user %>
+      <%= render "new", book: @book_new %>
+    </div>
+    <div class="col-md-8 offset-1">
+      <table class="table">
+        <tr>
+          <th></th>
+          <th>タイトル</th>
+          <th colspan="1">内容</th>
+        </tr>
+        <tr>
+          <td><%= image_tag @book.get_image(100,100) %></td>
+          <td><%= link_to @book.title, book_path(@book) %></td>
+          <td><%= link_to @book.body %></td>
+          <td>
+            <% if my_book?(@book) %>
+              <%= link_to "編集",edit_book_path(@book),class: "btn btn-success" %>
+              <%= link_to "削除",book_path(@book), method: :delete,class: "btn btn-danger" %>
+            <% end %>
+          </td>
+
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
