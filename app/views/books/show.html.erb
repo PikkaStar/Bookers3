@@ -9,21 +9,33 @@
         <tr>
           <th></th>
           <th>タイトル</th>
-          <th colspan="1">内容</th>
+          <th colspan="2">内容</th>
         </tr>
         <tr>
           <td><%= image_tag @book.get_image(100,100) %></td>
           <td><%= link_to @book.title, book_path(@book) %></td>
           <td><%= link_to @book.body %></td>
-          <td>
-            <% if my_book?(@book) %>
+          <% if my_book?(@book) %>
+            <td>
               <%= link_to "編集",edit_book_path(@book),class: "btn btn-success" %>
               <%= link_to "削除",book_path(@book), method: :delete,class: "btn btn-danger" %>
-            <% end %>
-          </td>
-
+            </td>
+          <% else %>
+            <td id="favorite_btn<%= @book.id %>">
+              <%= render "favorites/favorite", book: @book %>
+          <% end %>
+            </td>
+            <td id="comment_count"><%= render "comments/comment_count", book: @book %></td>
         </tr>
       </table>
+      <h3>コメント</h3>
+      <div id="comments">
+        <%= render 'comments/index', book: @book %>
+      </div>
+      <%= form_with model: [@book, @comment],local: false do |f| %>
+        <%= f.text_area :comment, rows: "3",id: "comment_area" %>
+        <%= f.submit "送信", class: "btn btn-secondary" %>
+      <% end %>
     </div>
   </div>
 </div>
