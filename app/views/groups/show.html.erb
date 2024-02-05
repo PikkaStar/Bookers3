@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/info', user: @owner %>
+    </div>
+    <div class="col-md-8 offset-1">
+      <% if @group.is_owned_by?(current_user) %>
+      　　<%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %>
+      <% elsif @group.includesUser?(current_user)%>
+      　　<%= link_to 'Leave this group', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+      <% else %>
+      　　<%= link_to 'Join this group', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-success" %>
+      <% end %>
+      <table class="table">
+        <tr>
+          <th></th>
+          <th>グループ名</th>
+          <th>作成者</th>
+        </tr>
+        <tr>
+          <td><%= image_tag @group.get_group_image(100,100) %></td>
+          <td><%= @group.name %></td>
+          <td><%= @owner.name %></td>
+        </tr>
+      </table>
+      <%= @group.introduction %>
+      <%= @group.users.map(&:name).join(', ') %>
+    </div>
+  </div>
+</div>

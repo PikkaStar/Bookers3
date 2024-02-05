@@ -1,4 +1,7 @@
 <h3><%= user.name %>さん</h3>
+<% if my_user?(user) %>
+  <%= link_to "グループ作成",new_group_path, class: "btn btn-success" %>
+<% end %>
 <%= image_tag user.get_profile_image(100,100) %>
 <table class="table">
   <tr>

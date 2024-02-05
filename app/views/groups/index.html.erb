@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/info', user: @user %>
+    </div>
+    <div class="col-md-8 offset-1">
+      <table class="table">
+        <tr>
+          <th></th>
+          <th>グループ名</th>
+        </tr>
+        <% @groups.each do |group| %>
+          <tr>
+            <td><%= image_tag group.get_group_image(100,100) %></td>
+            <td><%= link_to group.name, group_path(group) %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

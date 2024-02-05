@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h2>グループ編集</h2>
+      <%= form_with model: @group do |f| %>
+        <%= f.file_field :group_image, accept: "image/*" %>
+
+        <%= f.label :name, "名前" %>
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+
+        <%= f.label :introduction, "紹介" %>
+        <%= f.text_area :introduction, rows: "5" ,class: "form-control" %>
+
+        <%= f.submit "作成" ,class: "btn btn-primary" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>
