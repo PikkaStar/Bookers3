@@ -5,6 +5,7 @@
       <%= render "new", book: @book %>
     </div>
     <div class="col-md-8 offset-1">
+      <%= link_to "いいね順", books_path(favorite_count: true) %>
       <table class="table">
         <tr>
           <th>投稿者</th>

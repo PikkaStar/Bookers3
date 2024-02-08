@@ -5,6 +5,18 @@
       <%= render "books/new", book: @book %>
     </div>
     <div class="col-md-8 offset-1">
+      <% unless my_user?(@user) %>
+        <% if @isArea == true %>
+          <%= link_to "チャットする",area_path(@room),class: "btn btn-secondary" %>
+        <% else %>
+          <%= form_for @area do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+            <% f.submit "チャットする" ,class: "btn btn-secondary" %>
+          <% end %>
+        <% end %>
+      <% end %>
       <table class="table">
         <tr>
           <th></th>

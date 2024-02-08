@@ -10,6 +10,22 @@ class UsersController < ApplicationController
 
   def show
     @books = @user.books
+    @current_entry = Entry.where(user_id: current_user.id)
+    @partner_entry = Entry.where(user_id: @user.id)
+    unless @user == current_user
+      @current_entry.each do |c|
+        @partner_entry.each do |p|
+          if c.area_id == p.area_id
+            @isArea = true
+            @room = c.area_id
+          end
+        end
+      end
+      unless @isArea
+        @area = Area.new
+        @entry = Entry.new
+      end
+    end
   end
 
   def edit

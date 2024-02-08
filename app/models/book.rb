@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   belongs_to :user
+  scope :favorite_count, -> {self.includes(:favorites).sort{|a,b| b.favorites.size <=> a.favorites.size}}
 
   def get_image(width,height)
     if image.attached?

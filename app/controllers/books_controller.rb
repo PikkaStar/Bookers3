@@ -19,7 +19,11 @@ class BooksController < ApplicationController
 
   def index
     @book = Book.new
-    @books = Book.page(params[:page]).per(10)
+    if params[:favorite_count]
+      @books = Kaminari.paginate_array(Book.favorite_count).page(params[:page]).per(10)
+    else
+      @books = Book.page(params[:page]).per(10)
+    end
     @user = current_user
   end
 
