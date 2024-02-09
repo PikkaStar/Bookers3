@@ -15,8 +15,15 @@ class TalksController < ApplicationController
   end
 
   def destroy
-    current_user.talks.find(params[:id]).destroy
-    redirect_to request.referer
+     talk = Talk.find(params[:id])
+     talk.destroy
+     redirect_to request.referer
+  end
+
+  private
+
+  def talk_params
+    params.require(:talk).permit(:message)
   end
 
 end

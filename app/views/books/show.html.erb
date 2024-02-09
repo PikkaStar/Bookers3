@@ -14,7 +14,7 @@
         <tr>
           <td><%= image_tag @book.get_image(100,100) %></td>
           <td><%= link_to @book.title, book_path(@book) %></td>
-          <td><%= link_to @book.body %></td>
+          <td><%= @book.body %></td>
           <% if my_book?(@book) %>
             <td>
               <%= link_to "編集",edit_book_path(@book),class: "btn btn-success" %>
