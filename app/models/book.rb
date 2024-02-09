@@ -5,6 +5,7 @@ class Book < ApplicationRecord
   has_one_attached :image
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :view_counts, dependent: :destroy
   belongs_to :user
   scope :favorite_count, -> {self.includes(:favorites).sort{|a,b| b.favorites.size <=> a.favorites.size}}
 
