@@ -16,6 +16,7 @@ class User < ApplicationRecord
          has_many :entries, dependent: :destroy
          has_many :talks, dependent: :destroy
          has_many :view_counts, dependent: :destroy
+
          validates :name, presence: true
          validates :introduction, length: {maximum: 100}
 
